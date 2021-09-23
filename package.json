@@ -1,0 +1,35 @@
+{
+  "name": "@myorg/zoran-testing",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Testing now project to see what it will do",
+  "keywords": [
+    "ServiceNow",
+    "Now Experience UI Component",
+    "zoran-testing"
+  ],
+  "readme": "./README.md",
+  "engines": {
+    "node": ">=8.6.0",
+    "npm": ">=5.3.0"
+  },
+  "module": "src/index.js",
+  "dependencies": {
+    "@servicenow/cli-archetype": "20.0.0",
+    "@servicenow/cli-component-archetype": "20.0.0",
+    "@servicenow/library-translate": "quebec",
+    "@servicenow/now-card": "^19.8.2-ecd",
+    "@servicenow/now-loader": "^19.8.2-ecd",
+    "@servicenow/now-modal": "^19.8.2-ecd",
+    "@servicenow/now-rich-text": "^19.8.2-ecd",
+    "@servicenow/sass-kit": "quebec",
+    "@servicenow/sass-theme": "quebec",
+    "@servicenow/ui-core": "quebec",
+    "@servicenow/ui-effect-http": "^19.4.2",
+    "@servicenow/ui-renderer-snabbdom": "quebec"
+  },
+  "devDependencies": {
+    "@servicenow/cli-archetype-dev": "20.0.0",
+    "@servicenow/cli-component-archetype-dev": "20.0.0"
+  }
+}

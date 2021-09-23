@@ -1,0 +1,22 @@
+{
+  "components": {
+    "x-694957-zoran-testing": {
+      "uiBuilder": {
+        "associatedTypes": ["global.core", "global.landing-page"],
+        "label": "[WOW_MAJOR] KB Search",
+        "icon": "document-outline",
+        "description": "Search KB Articles",
+        "category": "primitives"
+      },
+      "innerComponents": [
+        "now-rich-text",
+        "now-loader",
+        "now-modal",
+        "now-card",
+        "now-button",
+        "now-icon"
+      ]
+    }
+  },
+  "scopeName": "this_is_new_scope_name"
+}

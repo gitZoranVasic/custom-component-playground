@@ -1,0 +1,29 @@
+@import '@servicenow/sass-kit/host';
+
+div {
+  header {
+    display: flex;
+    flex-direction: initial;
+    border: 1px solid grey;
+    padding: 1rem 0.5rem;
+
+    &:focus {
+      outline: none;
+      border: 1px solid green;
+    }
+  }
+
+  input {
+    border: none;
+    flex: 1;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  now-icon {
+    margin-right: 0.5rem;
+  }
+}
