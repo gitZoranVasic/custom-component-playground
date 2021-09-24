@@ -8,59 +8,63 @@ import '@servicenow/now-card';
 import '@servicenow/now-modal';
 import '@servicenow/now-loader';
 import '@servicenow/now-rich-text';
+import '@servicenow/now-button';
 import { createHttpEffect } from '@servicenow/ui-effect-http';
 
 const requestSearchResults = ({ properties, dispatch }) => {
 	if (properties.searchText) {
 		dispatch('SEARCH_RESULTS_REQUESTED', {
-			table: 'kb_knowledge',
-			sysparm_query: `short_descriptionLIKE${properties.searchText}`
+			table: properties.table,
+			sysparm_query: `${properties.field}LIKE${properties.searchText}`
 		});
 	}
 };
 
 const view = (state, { updateState }) => {
 	return (
-		<now-card>{
-			state.showLoading ? (
-				<now-loader />
-			) : (
-				<ul>
-					{state.searchResults.length ? (
-						state.searchResults.map(result => (
-							<li>
-								<now-button-iconic
-									bare
-									icon="circle-info-outline"
-									size="md"
-									on-click={() => { updateState({ selectedResult: result }); }}
-								></now-button-iconic>
-								{result.short_description}</li>
-						))
-					) : (
-						<li>No matches found</li>
-					)}
-				</ul>
-			)}
+		<div>
+			<p>Table: {state.properties.table}, field: {state.properties.field}</p>
+			<now-card>{
+				state.showLoading ? (
+					<now-loader />
+				) : (
+					<ul>
+						{state.searchResults.length ? (
+							state.searchResults.map(result => (
+								<li>
+									<now-button-iconic
+										bare
+										icon="circle-info-outline"
+										size="md"
+										on-click={() => { updateState({ selectedResult: result }); }}
+									></now-button-iconic>
+									{result.short_description}</li>
+							))
+						) : (
+							<li>No matches found</li>
+						)}
+					</ul>
+				)}
 
-			{
-				state.selectedResult ? (
-					<now-modal
-						opened={state.selectedResult}
-						size='lg'
-						footerActions={[
-							{
-								label: 'Done',
-								variant: 'secondary',
-								clickActioyType: 'NOW_MODAL#OPENED_SEST'
-							}
-						]}
-					>
-						<now-rich-text html={state.selectedResult.text}></now-rich-text>
-					</now-modal>
-				) : null
-			}
-		</now-card>
+				{
+					state.selectedResult ? (
+						<now-modal
+							opened={state.selectedResult}
+							size='lg'
+							footer-actions={[
+								{
+									label: 'Done',
+									variant: 'secondary',
+									clickActionType: 'OPENED_TEST'
+								}
+							]}
+						>
+							<now-rich-text html={state.selectedResult.text}></now-rich-text>
+						</now-modal>
+					) : null
+				}
+			</now-card>
+		</div>
 	);
 };
 
@@ -71,10 +75,10 @@ createCustomElement('bp-search-results', {
 		searchResults: []
 	},
 	properties: {
-		searchText: {
-			default: 'email'
-		},
-		selectedResult: {}
+		searchText: { default: "email" },
+		selectedResult: {},
+		table: { 'default': 'kb_knowledge' },
+		field: { 'default': 'short_description' },
 	},
 	view,
 	actionHandlers: {
@@ -93,7 +97,11 @@ createCustomElement('bp-search-results', {
 		SEARCH_RESULTS_FETCHED: ({ action, updateState }) => updateState({
 			searchResults: action.payload.result,
 			showLoading: false
-		})
+		}),
+		OPENED_TEST: ({ updateProperties }) => {
+			console.log('zoran');
+			updateProperties({ selectedResult: {} });
+		}
 	},
 	styles
 });

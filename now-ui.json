@@ -15,8 +15,45 @@
         "now-card",
         "now-button",
         "now-icon"
+      ],
+      "actions": [
+        {
+          "description": "Fired from a button",
+          "label": "Button click event",
+          "action": "EVENT_FIRED",
+          "payload": []
+        }
+      ],
+      "properties": [
+        {
+          "name": "searchText",
+          "label": "Search text",
+          "description": "",
+          "readOnly": false,
+          "fieldType": "string",
+          "required": false,
+          "defaultValue": "Microsoft"
+        },
+        {
+          "name": "table",
+          "label": "Table",
+          "description": "",
+          "readOnly": false,
+          "fieldType": "string",
+          "required": true,
+          "defaultValue": "kb_knowledge"
+        },
+        {
+          "name": "field",
+          "label": "Table field",
+          "description": "",
+          "readOnly": false,
+          "fieldType": "string",
+          "required": true,
+          "defaultValue": "kb_category"
+        }
       ]
     }
   },
-  "scopeName": "this_is_new_scope_name"
+  "scopeName": "x_694957_myorg_z_1"
 }
